@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>CarreyJ Online stores</title>
+    <title>SokoPoa Online stores</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="material/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -27,13 +27,13 @@
                     <i class="fa fa-building"></i>
                 </h1>
                 <h5 class="font-snow golden-ratio-min">
-                    </h>CJ Inc</h5>
+                    </h>SokoPoa Inc</h5>
 
             </center>
         </div>
         <div class="row">
-            <div class="col-3">
-                <div class="side" id="site_news">
+            <div class="col-3"style="max-height:100%">
+                <div class="side flex-column" id="site_news">
                     <center class="font-purple golden-ratio-min">Site News</center>
                     <ul>
                         <li>
@@ -49,11 +49,12 @@
 
                 <div class="flex-column flex-center" id="home_page">
                     <img id="image-slides" class="animated fadeIn" src="material/images/1.png">
-                    <h1 class="animated fadeIn mb-2 font-purple golden-ratio-max">Welcome to CarreyJ online Stores</h1>
+                    <h1 class="animated fadeIn mb-2 font-purple golden-ratio-max">Welcome to SokoPoa online Stores</h1>
 
                     <h5 class="animated fadeIn mb-1 font-purple golden-ratio-min">Thank you for choosing to trade with
                         us. We're glad you're with us.</h5>
                     <div class="row">
+                        <div class="element d-none" id="element"></div>
                         <button class="btn btn-lg button-purple" id="button_register" data-toggle="collapse"
                             data-target="#form_register">
                             <span class="font-snow">Sign UP</span>
@@ -66,45 +67,50 @@
 
                     <div class="md-form collapse" id="form_register">
 
-                        <form class="form-group " method="POST">
+                        <form class="form-group " action="javascript:registration();" method="POST">
                             <center>
                                 <span class="font-purple golden-ratio-min">Create Account</span>
                             </center>
                             <div class="row">
-                                <div class="col-4">
-                                    <input type="text" placeholder="" class="form-control font-purple"
+                                <div class="col-3">
+                                    <input type="text" placeholder="" id="fname" class="form-control font-purple"
                                         required>
-                                    <span class="small font-purple">Full Names</span>
+                                    <span class="small font-purple">First Name</span>
                                 </div>
-                                <div class="col-4">
-                                    <input type="text" placeholder="" class="form-control font-purple"
+                                <div class="col-3">
+                                    <input type="text" placeholder="" id="surname" class="form-control font-purple"
+                                        required>
+                                    <span class="small font-purple">Surname</span>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" placeholder="" id="id" class="form-control font-purple"
                                         required>
                                     <span class="small font-purple">ID Number</span>
                                 </div>
-                                <div class="col-4">
-                                    <input type="text" placeholder="" class="form-control font-purple" required>
+                                <div class="col-3">
+                                    <input type="text" placeholder="" id="phone"class="form-control font-purple" required>
                                     <span class="small font-purple">Phone number</span>
                                 </div>
 
                             </div>
                             <div class="row">
                                 <div class="col-4">
-                                    <input type="email" placeholder="" class="form-control font-purple" required>
+                                    <input type="email" placeholder="" id="email" class="form-control font-purple" required>
                                     <span class="small font-purple">Email</span>
                                 </div>
                                 <div class="col-4">
-                                    <input type="text" placeholder="" class="form-control font-purple" required>
+                                    <input type="text" placeholder="" id="username" class="form-control font-purple" required>
                                     <span class="small font-purple"> Username: contains numbers and letters</span>
                                 </div>
                                 <div class="col-4">
-                                    <input type="password" placeholder="" class="form-control font-purple"
+                                    <input type="password" placeholder="" id="password" class="form-control font-purple"
                                         required>
                                     <span class="small font-purple">Password: Must contain
                                         uppercase, lowercase and numbers</span>
                                 </div>
                             </div>
                             <center>
-                                <button type="submit" class="btn btn-md button-purple">Register</button>
+                                <button type="submit" class="btn btn-md button-purple" onclick="registration">Register</button>
                             </center>
                         </form>
                     </div>
@@ -200,6 +206,8 @@
     <!-- /Start your project here-->
 
     <!-- SCRIPTS -->
+    <!--cors-->
+    <script type="text/javascript" src="material/js/cors.js"></script>
     <!-- JQuery -->
     <script type="text/javascript" src="material/js/jquery-3.1.1.min.js"></script>
     <!-- Bootstrap tooltips -->
