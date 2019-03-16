@@ -1,19 +1,4 @@
-/*// Create the XHR object.
-function createCORSRequest(method, url) {
-  var xhr = new XMLHttpRequest();
-  if ("withCredentials" in xhr) {
-    // XHR for Chrome/Firefox/Opera/Safari.
-    xhr.open(method, url, true);
-  } else if (typeof XDomainRequest != "undefined") {
-    // XDomainRequest for IE.
-    xhr = new XDomainRequest();
-    xhr.open(method, url);
-  } else {
-    // CORS not supported.
-    xhr = null;
-  }
-  return xhr;
-} */
+
 //Display a slide show
 function reload() {
   var slides = document.getElementById("image-slides");
@@ -37,38 +22,27 @@ $("#form_reset").on("shown.bs.collapse", function() {
   $("#form_login").collapse("hide");
   $("#form_register").collapse("hide");
 });
-
+// display electronics submenu
+$("#electronics").on("shown.bs.collapse", function(){
+  $("#living_room").collapse("hide");
+  $("#kitchen_ware").collapse("hide");
+});
+// display living room submenu
+$("#living_room").on("shown.bs.collapse", function(){
+  $("#electronics").collapse("hide");
+  $("#kitchen_ware").collapse("hide");
+});
+// display kithen ware submenu
+$("#kitchen_ware").on("shown.bs.collapse", function(){
+  $("#electronics").collapse("hide");
+  $("#living_room").collapse("hide");
+});
 let home_page = document.querySelector("#home_page");
 let main_page = document.querySelector("#main_page");
 let site_news = document.querySelector("#site_news");
-/*
-function getTitle(text) {
-  return text.match('<title>(.*)?</title>')[1];
-}
-*/
-/*function makeCorsRequest() {
-  // This is a sample server that supports CORS.
-  let url = "https://sokopoa.herokuapp.com/registration"
-  var xhr = createCORSRequest('POST', url);
-  if (!xhr) {
-    alert('CORS not supported');
-    return;
-  }
-  
-    // Response handlers.
-    xhr.onload = function() {
-      var text = xhr.responseText;
-      var title = getTitle(text);
-      alert('Response from CORS request to ' + url + ': ' + title);
-    };
-  
-    xhr.onerror = function() {
-      alert('Woops, there was an error making the request.');
-    };
-  
-    xhr.send();
-}*/
-//Create Account 
+let home_header = document.querySelector("#home_header");
+let main_header = document.querySelector("#main_header");
+
 function registration(){
   let fname = document.querySelector('#fname').value;
   let surname = document.querySelector('#surname').value;
@@ -80,10 +54,9 @@ function registration(){
   let elem = document.querySelector('#element');
   console.log(password);
   $.ajax({
-    url:" http://127.0.0.1:5000/registration",
     type:"POST",
-    crossDomain:true,
-    data:JSON.stringify({
+    url:"https://sokopoa.herokuapp.com/registration",
+    data:{
       fname:fname,
       surname:surname,
       id:id,
@@ -91,24 +64,22 @@ function registration(){
       email:email,
       username:username,
       password:password
-    }),
+    },
     datatype:"json",
-    Success:function(response){
-      let response = JSON.parse(response);
-      if (response.success){
+    success:function(response){
+      if (response.success === true){
         window.alert(response.message);
         console.log(response.message);
         $('#form_login').collapse("show");
       } else{
-        window.alert(response.message);
-        fname = "";
+        console.log(response.message);
+        fname = " ";
         surname = "";
         id = "";
         phone = "";
         email = "";
         username = "";
-        password = "";
-        console.log(response.message);
+        password = " ";
       }
     },
     error: function (error) {
@@ -119,11 +90,40 @@ function registration(){
 };
 // login
 function login() {
-  home_page.classList.add("d-none");
-  if (main_page.classList.contains("d-none")) {
-    main_page.classList.remove("d-none");
-    site_news.classList.add("d-none");
-  }
+  let email = document.querySelector('#loginEmail');
+  let password = document.querySelector('#loginPass');
+  $.ajax({
+    type: "POST",
+    url: "https://sokopoa.herokuapp.com/login",
+    data: {
+      email:email.value,
+      password:password.value
+    },
+    datatype: "json",
+    success: function (response) {
+      if (response.success === true) {
+        console.log(response.message.message);
+        home_header.classList.add("d-none");
+        home_page.classList.add("d-none");
+        site_news.classList.add("d-none");
+        main_header.classList.remove("d-none");
+        main_page.classList.remove("d-none");
+       
+        userid = response.message.userid;
+        usertoken = response.message.token;
+
+        storeUserid = sessionStorage.setItem("userid", userid);
+        storeToken = sessionStorage.setItem("usertoken", usertoken);
+      } else {
+        console.log(response.message);
+        email.value = "";
+        password.value = "";
+      }
+    },
+    error: function (error) {
+      console.log("an error ocured" + error);
+    }
+  });
 }
 // logout
 function Logout() {

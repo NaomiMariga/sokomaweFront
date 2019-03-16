@@ -11,6 +11,11 @@
   margin-right: 2px;
   margin-bottom: 2pt;
 }
+#main_page{
+  background-color: white;
+  min-height: 78vh;
+  
+}
 #image-slides {
   max-width: 600px;
   height: auto;
@@ -23,15 +28,56 @@
   margin-left: 2px;
   margin-bottom: 2px;
 }
-
+#categories{
+  background-color: white;
+  box-shadow: 1px 1px 1px 1px#006666;
+  max-height:100%;
+  min-height: 100%;
+  align-content: space-around;
+  margin-left: 2px;
+  margin-bottom:2px;
+}
+#electronics{
+  background-color: white;
+  box-shadow: 0px 1px 1px 1px#006666;
+  min-width: 80%;
+  max-height:100%;
+  min-height: 20vh;
+  align-content: flex-start;
+  margin-left: 2px;
+  border-spacing: 10px;
+}
+#living_room{
+  background-color: white;
+  box-shadow: 0px 1px 1px 1px#006666;
+  min-width: 80%;
+  max-height:100%;
+  min-height: 20vh;
+  margin-left: 2px;
+  align-content: space-around;
+}
+#kitchen_ware{
+  background-color: white;
+  box-shadow: 0px 1px 1px 1px#006666;
+  min-width: 80%;
+  max-height:100%;
+  min-height: 20vh;
+  align-content: flex-start;
+  margin-left: 2px;
+  border-spacing: 10px;
+}
 #home_page {
   background-color: white;
+  min-height: 75vh;
 }
 .font-purple {
   font-family: "Roboto", sans-serif;
   color: #006666;
 }
-
+.col-md-2{
+  padding-left: 0px;
+  border-spacing: 50px;
+}
 .button-purple {
   background-color: #006666;
 }
@@ -65,7 +111,8 @@
   background-color: #006666;
   box-shadow: 1px 1px 1px 1px white;
   margin-top: 2px;
-  max-height: 50px;
+  margin-bottom:0px;
+  max-height: 30px;
   min-height: 20px;
 }
 .element{
