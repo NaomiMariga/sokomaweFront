@@ -127,11 +127,17 @@ function login() {
 }
 // logout
 function Logout() {
+  let categories = document.querySelector('#categories');
+  let kitchen = document.querySelector('#kitchen_ware');
+  let living = document.querySelector('#living_room');
+  let electronics = document.querySelector('#electronics')
   main_page.classList.add("d-none");
   main_header.classList.add("d-none");
+  categories.classList.add("d-none");
+  kitchen.classList.add("d-none");
+  living.classList.add("d-none");
+  electronics.classList.add("d-none");
   home_page.classList.remove("d-none");
   site_news.classList.remove("d-none");
   home_header.classList.remove("d-none");
- 
-  
 }
