@@ -128,7 +128,10 @@ function login() {
 // logout
 function Logout() {
   main_page.classList.add("d-none");
-  if (home_page.classList.contains("d-none")) {
-    home_page.classList.remove("d-none");
-  }
+  main_header.classList.add("d-none");
+  home_page.classList.remove("d-none");
+  site_news.classList.remove("d-none");
+  home_header.classList.remove("d-none");
+ 
+  
 }
